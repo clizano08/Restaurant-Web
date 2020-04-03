@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      >
+    <h:head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
+        <script src="./js/all.js"></script>
+        <link rel="stylesheet" href="css/navbar.css">
+            <link rel="stylesheet" href="css/Menu.css"></link>
+
+            <title>Menu</title>
+    </h:head>
+    <h:body class="bg-light">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <h:form class="bg-white p-5">
+                        <h1 class="display-4 text-center mb-4 mt-0">Iniciar Sesion</h1>
+
+                        <div class="form-group">
+                            <h:outputLabel value="Nombre de Usuario"></h:outputLabel>
+                            <h:inputText class="form-control" p:placeholder="Ingresa tu Nombre de Usuario" value="#{iniciaSesionBean.usuario}"></h:inputText>
+                        </div>
+
+                        <div class="form-group">
+                            <h:outputLabel value="Contrasena"></h:outputLabel>
+                            <h:inputSecret class="form-control" p:placeholder="Ingresa una Contraseña" value="#{registrateBean.contrasena}"></h:inputSecret>
+                        </div>
+
+                        <h:commandButton class="btn btn-primary btn-block mb-4" value="Ingresar" ></h:commandButton> 
+
+                        <small class="form-text text-muted">Todavia no tienes una cuenta? <a href="Registrate.xhtml"
+                                                                                             class="text-success">Ingresa Aqui</a></small>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        <!-- My own JavaScript -->
+        <script src="./js/submit.js" type="module"></script>
+    </h:body>
+</html>
+

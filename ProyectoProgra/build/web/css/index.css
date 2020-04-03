@@ -1,0 +1,11 @@
+.bg {
+    background-image: url("../img/100vh-BG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.bg-height-min {
+    min-height: 100vh;
+}

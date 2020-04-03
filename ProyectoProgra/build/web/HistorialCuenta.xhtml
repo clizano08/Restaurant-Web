@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
+        <script src="./js/all.js"></script>
+        <link rel="stylesheet" href="css/navbar.css"></link>
+        <title>Historial de Compra</title>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+            <a class="navbar-brand mr-5 brand-hover" href="#">La Casona de Costa Rica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+
+                <h:form class="my-lg-0 w-100">
+                    <div class="input-group">
+                        <h:inputText class="form-control" p:placeholder="Buscar...."
+                                     ></h:inputText>
+                        <div class="input-group-append margin-right">
+                            <h:commandButton class="btn btn-outline-danger" value="Buscar"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+
+                <ul class="navbar-nav margin-right">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.xhtml">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="Menu.xhtml">Menu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="mantenimientoDrowDown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mantenimiento
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="mantenimientoDrowDown">
+                            <a class="dropdown-item" href="Producto.xhtml">Producto</a>
+                            <a class="dropdown-item" href="Usuario.xhtml">Usuario</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="Despachos.xhtml">Despachos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="Reportes.xhtml">Reportes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="Cart.xhtml"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user fa-2x"></i>
+                        </a>
+                        <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="DetallesCuenta.xhtml">Detalles de la Cuenta</a>
+                            <a class="dropdown-item active" href="HistorialCuenta.xhtml">Historial de Compra</a>
+                            <h:form>
+                                <h:commandButton class="dropdown-item" value="Cerrar Sesion"></h:commandButton>
+                            </h:form>
+                            <!-- <a class="dropdown-item" href="#">Despachos</a> -->
+                            <!-- <a class="dropdown-item" href="#">Mantenimiento</a> -->
+                            <a class="dropdown-item" href="Registrate.xhtml">Registrarse</a>
+                            <a class="dropdown-item" href="IniciaSesion.xhtml">Iniciar Sesion</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-muted">Historial de Compra</h1>
+                    <table class="table table-responsive-lg table-hover table-striped">
+                        <thead class="bg-warning">
+                            <tr>
+                                <th>#</th>
+                                <th>Fecha de Compra</th>
+                                <th>Direccion de Entrega</th>
+                                <th>Fecha de Entrega</th>
+                                <th>Horario de Entrega</th>
+                                <th>Tipo de Pago</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-weight-bold">1</td>
+                                <td>3-16-2020</td>
+                                <td>Grecia, Centro del Parque</td>
+                                <td>3-20-2020</td>
+                                <td>En la Manana</td>
+                                <td>Contado</td>
+                                <td>35000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">2</td>
+                                <td>3-18-2020</td>
+                                <td>Alajuela,Palmares</td>
+                                <td>3-22-2020</td>
+                                <td>En la Tarde</td>
+                                <td>Credito</td>
+                                <td>22000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">3</td>
+                                <td>3-20-2020</td>
+                                <td>Grecia, Centro del Parque</td>
+                                <td>3-25-2020</td>
+                                <td>En la Noche</td>
+                                <td>Credito</td>
+                                <td>10000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">4</td>
+                                <td>3-28-2020</td>
+                                <td>Sarchi Norte</td>
+                                <td>3-30-2020</td>
+                                <td>En la Manana</td>
+                                <td>Contado</td>
+                                <td>35000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    </h:body>
+</html>
+

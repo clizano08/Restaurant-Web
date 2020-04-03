@@ -1,0 +1,24 @@
+.margin-right {
+    margin-right: 125px;
+}
+
+.brand-hover:hover {
+    font-weight: bold;
+}
+
+.a-hover:hover {
+    color: #E74C3C !important;
+}
+
+/* .nav-bar-heigh{
+    min-height: 5vh;
+} */
+
+.customer-photo {
+    height: 200px;
+}
+
+#client-1 {
+    background-image: url("../img/Client-1.jpg");
+    background-size: cover;
+}

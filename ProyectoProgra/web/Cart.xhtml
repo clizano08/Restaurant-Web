@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
+        <script src="./js/all.js"></script>
+        <link rel="stylesheet" href="css/navbar.css"></link>
+        <link rel="stylesheet" href="css/Cart.css"></link>
+        <title>Cart Items</title>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+            <a class="navbar-brand mr-5 brand-hover" href="#">La Casona de Costa Rica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+
+                <h:form class="my-lg-0 w-100">
+                    <div class="input-group">
+                        <h:inputText class="form-control" p:placeholder="Buscar...."
+                                     ></h:inputText>
+                        <div class="input-group-append margin-right">
+                            <h:commandButton class="btn btn-outline-danger" value="Buscar"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+
+                <ul class="navbar-nav margin-right">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.xhtml">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="Menu.xhtml">Menu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="mantenimientoDrowDown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mantenimiento
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="mantenimientoDrowDown">
+                            <a class="dropdown-item" href="Producto.xhtml">Producto</a>
+                            <a class="dropdown-item" href="Usuario.xhtml">Usuario</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Despachos.xhtml">Despachos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Reportes.xhtml">Reportes</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="Cart.xhtml"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user fa-2x"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="DetallesCuenta.xhtml">Detalles de la Cuenta</a>
+                            <a class="dropdown-item" href="HistorialCuenta.xhtml">Historial de Compra</a>
+                            <h:form>
+                                <h:commandButton class="dropdown-item" value="Cerrar Sesion"></h:commandButton>
+                            </h:form>
+                            <!-- <a class="dropdown-item" href="#">Despachos</a> -->
+                            <!-- <a class="dropdown-item" href="#">Mantenimiento</a> -->
+                            <a class="dropdown-item" href="Registrate.xhtml">Registrarse</a>
+                            <a class="dropdown-item" href="IniciaSesion.xhtml">Iniciar Sesion</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <div class="container mt-5 pt-5">
+            <h1 class="text-center mb-3">Articulos en el Carro</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-responsive-sm table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <!-- <th scope="col">Imagen</th> -->
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio por Unidad</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">SubTotal</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <!-- <td><img src="./img/Menu/Tacos.jpg" alt="" class="img-table"></td> -->
+                                <td>Taco</td>
+                                <td>2500</td>
+                                <td>5</td>
+                                <td>12500</td>
+                                <td>
+                                    <h:form><h:commandButton class="btn btn-danger" value="Eliminar"></h:commandButton></h:form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <!-- <td><img src="./img/Menu/Tacos.jpg" alt="" class="img-table"></td> -->
+                                <td>Hamburguesa</td>
+                                <td>3500</td>
+                                <td>5</td>
+                                <td>17500</td>                                
+                                <td><h:form><h:commandButton class="btn btn-danger" value="Eliminar"></h:commandButton></h:form></td>
+
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <!-- <td><img src="./img/Menu/Tacos.jpg" alt="" class="img-table"></td> -->
+                                <td>Papas Fritas</td>
+                                <td>2000</td>
+                                <td>5</td>
+                                <td>10000</td>
+                                <td><h:form><h:commandButton class="btn btn-danger" value="Eliminar"></h:commandButton></h:form></td>
+                            </tr>
+                            <tr>
+                                <th>4</th>
+                                <!-- <td><img src="./img/Menu/Tacos.jpg" alt="" class="img-table"></td> -->
+                                <td>Pizza</td>
+                                <td>7500</td>
+                                <td>10</td>
+                                <td>75000</td>
+                                <td><h:form><h:commandButton class="btn btn-danger" value="Eliminar"></h:commandButton></h:form></td>
+                            </tr>
+                            <tr>
+                                <th>5</th>
+                                <!-- <td><img src="./img/Menu/Tacos.jpg" alt="" class="img-table"></td> -->
+                                <td>Nachos</td>
+                                <td>1000</td>
+                                <td>7</td>
+                                <td>70000</td>
+                                <td><h:form><h:commandButton class="btn btn-danger" value="Eliminar"></h:commandButton></h:form></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-6">
+                    <h1 class="display-4 text-center">Detalles de la Compra</h1>
+                    <!-- <table class="table table-striped table-responsive table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>SubTotal</th>
+                                <th>Descuento</th>
+                                <th>Iva</th>
+                                <th>Total a Pagar</th>
+                                <th>Acccion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>58000</td>
+                                <td>8000</td>
+                                <td>20000</td>
+                                <td>70000</td>
+                                <td>
+                                    <buttto class="btn btn-block btn-warning">Pagar</buttto>
+                                </td>
+                            </tr>
+                        </tbody> 
+                        </table>-->
+                    <table class="table table-striped table-hover">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th>Desglose</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-weight-bold">SubTotal</td>
+                                <td>58000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">Descuento</td>
+                                <td>8000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">Iva</td>
+                                <td>20000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">Total a Pagar</td>
+                                <td>70000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h:form>
+                        <h:commandButton class="btn btn-block btn-dark font-weight-bold" value="Pagar"></h:commandButton>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <!-- <h1 class="text-center display-4">Detalles de la Compra</h1>
+                    <h4>SubTotal:</h4>
+                    <p>58000</p>
+                    <h4>Descuento:</h4>
+                    <p>58000</p>
+                    <h4>Iva:</h4>
+                    <p>20000</p>
+                    <h3>Total a Pagar</h3>
+                    <p>1000000</p>
+                    <button class="btn btn-block btn-primary">Pagar</button> -->
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    </h:body>
+</html>
+
