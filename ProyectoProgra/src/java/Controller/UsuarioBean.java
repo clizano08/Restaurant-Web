@@ -105,7 +105,6 @@ public class UsuarioBean implements Serializable {
         listaInactivo.clear();
         listaActivo=seleccionarTodosUsuarioActivo();
         listaInactivo=seleccionarTodosUsuarioInactivo();
-        setMensaje("");
     }
     
 
@@ -177,10 +176,10 @@ public class UsuarioBean implements Serializable {
         
     }
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   public void eliminarUsuario(int id) throws SNMPExceptions, SQLException{
-        this.mensaje="Usuario borrado satisfactoriamente!";
-        new UsuarioDB().EliminarUsuario(id);
-        actualizarListas();
+   public void eliminarUsuario(int id) throws SNMPExceptions, SQLException{  
+       new UsuarioDB().EliminarUsuario(id);
+       actualizarListas(); 
+       this.mensaje="Usuario borrado satisfactoriamente!"; 
     }
    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
        public LinkedList<Usuario> seleccionarTodosUsuario() throws SNMPExceptions, SQLException{
@@ -199,7 +198,6 @@ public class UsuarioBean implements Serializable {
     }
  //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    public void activarUsuarioPorId(int id) throws SNMPExceptions, SQLException{
-        
         new UsuarioDB().ActivarUsuarioPorID(id);
         actualizarListas();
         this.mensaje="El Usuario se ha activado!";

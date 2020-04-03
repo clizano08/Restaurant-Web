@@ -127,7 +127,7 @@
                                                         <f:facet name = "header">Acciones</f:facet>
                                                         <h:form>
                                                         <h:commandButton value="Modificar" ></h:commandButton>
-                                                        <h:commandButton value="Eliminar" ></h:commandButton>
+                                                        <h:commandButton value="Eliminar" action="#{usuario.eliminarUsuario(usu.id)}"></h:commandButton>
                                                         </h:form>
                                         </h:column>
                                         
@@ -182,7 +182,7 @@
                                          <h:column>    				
                                                         <f:facet name = "header">Acciones</f:facet>
                                                         <h:form>
-                                                            <h:commandButton value="Activar" ></h:commandButton>
+                                                            <h:commandButton value="Activar"  action="#{usuario.activarUsuarioPorId(usua.id)}"></h:commandButton>
                                                        
                                                         </h:form>
                                         </h:column>
