@@ -75,7 +75,7 @@ public class RegistrateBean implements Serializable {
     
     
         public int identificadorDireccion() throws SNMPExceptions, SQLException{
-        return new UsuarioDB().SeleccionarTodosUsuario().isEmpty() ? 1: (new UsuarioDB().SeleccionarTodosUsuario().size()+1);
+        return new DireccionDB().SeleccionarTodosDireccion().isEmpty() ? 1: (new DireccionDB().SeleccionarTodosDireccion().size()+1);
     }
 
    //------------------------------------------------------------------------------------------------------------------------------------
