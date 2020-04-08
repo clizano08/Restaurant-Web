@@ -38,7 +38,7 @@ public class DireccionDB {
             "exec SP_InsertarDireccion "
                + dir.getId() + "," 
                + dir.getIdUsuario()+ ","
-               + dir.getDireccion();
+               +"'"+ dir.getDireccion()+"'";
                          
    
                      
@@ -197,7 +197,7 @@ public class DireccionDB {
             
            
             select=
-                    "exec SP_SeleccionarTodosDireccionPorUsuarioID"+ idUsuario;
+                    "exec SP_SeleccionarTodosDireccionPorUsuarioID "+ idUsuario;
            
             ResultSet rsPA= accesoDatos.ejecutaSQLRetornaRS(select);
             

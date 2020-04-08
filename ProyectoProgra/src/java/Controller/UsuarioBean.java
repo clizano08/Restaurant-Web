@@ -10,6 +10,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import javax.faces.model.SelectItem;
 
 @Named(value = "usuario")
 @SessionScoped
@@ -99,6 +100,7 @@ public class UsuarioBean implements Serializable {
     public String getMensaje() {
         return mensaje;
     }
+    
     //----------------------------------------------------------------------------------------------------------------------------------
     public void actualizarListas() throws SNMPExceptions, SQLException {
         listaActivo.clear();
@@ -197,7 +199,7 @@ public class UsuarioBean implements Serializable {
         return new UsuarioDB().SeleccionarTodosUsuarioInactivo();
     }
  //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   public void activarUsuarioPorId(int id) throws SNMPExceptions, SQLException{
+   public void activarUsuarioPorID(int id) throws SNMPExceptions, SQLException{
         new UsuarioDB().ActivarUsuarioPorID(id);
         actualizarListas();
         this.mensaje="El Usuario se ha activado!";

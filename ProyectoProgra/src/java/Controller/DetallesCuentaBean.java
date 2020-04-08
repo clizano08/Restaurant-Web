@@ -1,32 +1,60 @@
 package Controller;
 
+import DAO.SNMPExceptions;
+import Model.Direccion;
+import Model.DireccionDB;
+import Model.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.Map;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 @Named(value = "detallesCuenta")
 @SessionScoped
 public class DetallesCuentaBean implements Serializable {
 
-    String usuario;
+    String nombre;
     String telefono;
-    String direccion;
-    String tipoUsuario;
     String direccionEntrega;
 
-    public DetallesCuentaBean() {
-        usuario = "ToastedGuy2";
-        telefono = "86823064";
-        direccion = "La que sea";
-        tipoUsuario = "Cliente";
+    public String getDireccionEntrega() {
+        return direccionEntrega;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public void setDireccionEntrega(String direccionEntrega) {
+        this.direccionEntrega = direccionEntrega;
+    }
+    String tipoUsuario;
+    Usuario user;
+    String mensaje;
+
+    public DetallesCuentaBean() throws SNMPExceptions, SQLException {
+        user= usuarioLogueado();
+        nombre = user.getNombre();
+        telefono = user.getTelefono();
+        tipoUsuario = user.getTipoUsuario();
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public String getNombre() {
+        return nombre;
+    }
+
+  
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getTelefono() {
@@ -37,13 +65,7 @@ public class DetallesCuentaBean implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public String getTipoUsuario() {
         return tipoUsuario;
@@ -53,13 +75,16 @@ public class DetallesCuentaBean implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public String getDireccionEntrega() {
-        return direccionEntrega;
+ 
+//---------------------------------------------------------------------------------------------------------------------------
+    public Usuario usuarioLogueado() {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("Usuario");
+        final ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        final Map session = context.getSessionMap();
+        final Usuario user = (Usuario) session.get("Usuario");
+        return user;
     }
-
-    public void setDireccionEntrega(String direccionEntrega) {
-        this.direccionEntrega = direccionEntrega;
-    }
+//-------------------------------------------------------------------------------------------------------------------------------------
     
     
 

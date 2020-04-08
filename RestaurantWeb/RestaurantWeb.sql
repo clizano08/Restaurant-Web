@@ -367,10 +367,10 @@ IF OBJECT_ID('SP_EliminarDetPedidoPorID') is NOT NULL
 Drop Proc  SP_EliminarDetPedidoPorID;
 
 CREATE PROCEDURE SP_EliminarDetPedidoPorID 
-(@IDEncPedido int)
+(@IDEncPedido int, @IDProducto int)
 AS  
  	Delete from DetPedido
-	Where (IDEncPedido =  @IDEncPedido);
+	Where (IDEncPedido =  @IDEncPedido and IDProducto = @IDProducto);
 
 IF OBJECT_ID('SP_ActualizarDetPedido') is NOT NULL 
 Drop Proc  SP_ActualizarDetPedido;
@@ -605,7 +605,8 @@ exec SP_EliminarDireccionPorID 1
 exec SP_InsertarUsuario 1,1,'admin','123','Administrador','888',true;
 exec SP_InsertarUsuario 2,1,'maria','1234','Cliente','777',false; 
 exec SP_ActualizarUsuario 1,1,'Carlos','admin','Administrador','87806817',true;
-exec SP_EliminarUsuarioPorID 1;
+exec SP_EliminarUsuarioPorID ;
+exec SP_ActivarUsuarioPorID 2
 exec SP_SeleccionarTodosUsuario
 exec SP_SeleccionarTodosUsuarioActivo
 exec SP_SeleccionarTodosUsuarioInactivo

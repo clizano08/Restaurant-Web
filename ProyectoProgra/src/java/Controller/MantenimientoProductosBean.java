@@ -159,7 +159,7 @@ public class MantenimientoProductosBean implements Serializable {
             if(db.SeleccionarProductoPorID(prod.getId())!= null){
                 db.ActualizarProducto(prod);
                 actualizarLista();
-                this.setMensaje(String.valueOf(prod.getId()+prod.getNombre()+prod.getPrecio()+prod.getCantidad()+prod.getCantidadMinimaVenta()));
+                this.setMensaje("El Producto se ha actualizado correctamente!");
                 
             }else{
                

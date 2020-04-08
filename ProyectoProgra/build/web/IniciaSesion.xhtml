@@ -9,10 +9,10 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
         <script src="./js/all.js"></script>
-        <link rel="stylesheet" href="css/navbar.css">
-            <link rel="stylesheet" href="css/Menu.css"></link>
+        <link rel="stylesheet" href="css/navbar.css"></link>
+        <link rel="stylesheet" href="css/Menu.css"></link>
 
-            <title>Menu</title>
+        <title>Menu</title>
     </h:head>
     <h:body class="bg-light">
         <div class="container mt-5">
@@ -21,20 +21,22 @@
                     <h:form class="bg-white p-5">
                         <h1 class="display-4 text-center mb-4 mt-0">Iniciar Sesion</h1>
 
+                        <h:outputLabel value="#{iniciaSesionBean.mensajeError}" class=" text-center font-weight-bold text-danger"></h:outputLabel>
+
                         <div class="form-group">
-                            <h:outputLabel value="Nombre de Usuario"></h:outputLabel>
-                            <h:inputText class="form-control" p:placeholder="Ingresa tu Nombre de Usuario" value="#{iniciaSesionBean.usuario}"></h:inputText>
+                            <h:outputLabel value="Numero de Identificacion"></h:outputLabel>
+                            <h:inputText class="form-control" p:placeholder="Ingresa tu Cedula" value="#{iniciaSesionBean.id}"></h:inputText>
                         </div>
 
                         <div class="form-group">
                             <h:outputLabel value="Contrasena"></h:outputLabel>
-                            <h:inputSecret class="form-control" p:placeholder="Ingresa una Contraseña" value="#{registrateBean.contrasena}"></h:inputSecret>
+                            <h:inputSecret class="form-control" p:placeholder="Ingresa una Contraseña" value="#{iniciaSesionBean.contrasena}"></h:inputSecret>
                         </div>
 
-                        <h:commandButton class="btn btn-primary btn-block mb-4" value="Ingresar" ></h:commandButton> 
+                        <h:commandButton class="btn btn-primary btn-block mb-4" value="Ingresar" action="#{iniciaSesionBean.intentoDeInicioSesion()}"></h:commandButton> 
 
-                        <small class="form-text text-muted">Todavia no tienes una cuenta? <a href="Registrate.xhtml"
-                                                                                             class="text-success">Ingresa Aqui</a></small>
+                        <small class="form-text text-muted">Todavia no tienes una cuenta? <a href="Registrate.xhtml" class="text-success">Ingresa Aqui</a></small>
+                        <br></br>
                     </h:form>
                 </div>
             </div>

@@ -1,24 +1,35 @@
 .margin-right {
-    margin-right: 125px;
+    margin-right: 450px;
 }
 
-.brand-hover:hover {
+/*.brand-hover:hover {
     font-weight: bold;
 }
 
 .a-hover:hover {
     color: #E74C3C !important;
-}
+}*/
 
 /* .nav-bar-heigh{
     min-height: 5vh;
 } */
 
-.customer-photo {
+/*.customer-photo {
     height: 200px;
-}
+}*/
 
-#client-1 {
+/*#client-1 {
     background-image: url("../img/Client-1.jpg");
     background-size: cover;
+}*/
+form{
+    display: block;
+}
+.navbar-nav li:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-cart-img{
+    height: 25px;
+    width: 50px;
 }

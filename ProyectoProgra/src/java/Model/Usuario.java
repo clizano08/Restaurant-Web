@@ -10,12 +10,14 @@ package Model;
  * @author carlo
  */
 public class Usuario {
-   String id;
-   Direccion direccion;
-   String nombre;
-   String clave;
-   String tipoUsuario;
-   String telefono;
+
+    String id;
+    Direccion direccion;
+    String nombre;
+    String clave;
+    String tipoUsuario;
+    String telefono;
+    String editable;
 
     public Usuario() {
     }
@@ -33,6 +35,14 @@ public class Usuario {
         return id;
     }
 
+    public String getEditable() {
+        return editable;
+    }
+
+    public void setEditable(String editable) {
+        this.editable = editable;
+    }
+    
     public void setId(String id) {
         this.id = id;
     }
@@ -76,5 +86,17 @@ public class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-   
+
+    public boolean esAdministrador() { //Todo
+        return this.tipoUsuario.equals("Administrador");
+    }
+
+    public boolean esDespachador() { //Home -- Despachos -- Cuenta
+        return this.tipoUsuario.equals("Despachador") || this.tipoUsuario.equals("Administrador");
+    }
+
+    public boolean esCliente() { //Home -- Menu -- Cuenta
+        return this.tipoUsuario.equals("Cliente") || this.tipoUsuario.equals("Administrador");
+    }
+
 }

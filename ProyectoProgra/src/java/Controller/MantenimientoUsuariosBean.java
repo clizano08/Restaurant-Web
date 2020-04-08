@@ -20,13 +20,7 @@ public class MantenimientoUsuariosBean implements Serializable {
 
     }
 
-    public LinkedList<SelectItem> TiposUsuarios() {
-        LinkedList<SelectItem> tiposDeUsuario = new LinkedList<>();
-        tiposDeUsuario.add(new SelectItem("Administrador","Administrador"));
-        tiposDeUsuario.add(new SelectItem("Despachador","Despachador"));
-        tiposDeUsuario.add(new SelectItem("Cliente","Cliente"));
-        return tiposDeUsuario;
-    }
+    
 
     public String getUsuario() {
         return usuario;

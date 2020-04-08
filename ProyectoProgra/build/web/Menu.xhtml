@@ -13,203 +13,141 @@
         <link rel="stylesheet" href="css/Menu.css"></link>
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
-            <a class="navbar-brand mr-5 brand-hover" href="#">La Casona de Costa Rica</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <h:form>
 
-            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+                <a class="navbar-brand mr-5 brand-hover" href="#">La Casona de Costa Rica</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                <h:form class="my-lg-0 w-100">
-                    <div class="input-group">
-                        <h:inputText class="form-control" p:placeholder="Buscar...."
-                                     ></h:inputText>
-                        <div class="input-group-append margin-right">
-                            <h:commandButton class="btn btn-outline-danger" value="Buscar"></h:commandButton>
-                        </div>
-                    </div>
-                </h:form>
+                <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
 
-                <ul class="navbar-nav margin-right">
-                    <li class="nav-item">
-                        <a class="nav-link " href="index.xhtml">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link " href="Menu.xhtml">Menu</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="mantenimientoDrowDown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mantenimiento
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="mantenimientoDrowDown">
-                            <a class="dropdown-item" href="Producto.xhtml">Producto</a>
-                            <a class="dropdown-item" href="Usuario.xhtml">Usuario</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Despachos.xhtml">Despachos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Reportes.xhtml">Reportes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Cart.xhtml"><i class="fas fa-shopping-cart fa-2x"></i></a>
-                    </li>
+                    <ul class="navbar-nav margin-right">
+                        <li class="nav-item">
+                            <h:commandLink class="nav-link" value="Home" action="index.xhtml"></h:commandLink>
+                            <!--<a class="nav-link " href="index.xhtml">Home <span class="sr-only">(current)</span></a>-->
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink class="nav-link active" value="Menu" action="Menu.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esCliente()}"></h:commandLink>
+                            <!--<a class="nav-link " href="Menu.xhtml">Menu</a>-->
+                        </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user fa-2x"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="DetallesCuenta.xhtml">Detalles de la Cuenta</a>
-                            <a class="dropdown-item" href="HistorialCuenta.xhtml">Historial de Compra</a>
-                            <h:form>
-                                <h:commandButton class="dropdown-item" value="Cerrar Sesion"></h:commandButton>
-                            </h:form>
-                            <!-- <a class="dropdown-item" href="#">Despachos</a> -->
-                            <!-- <a class="dropdown-item" href="#">Mantenimiento</a> -->
-                            <a class="dropdown-item" href="Registrate.xhtml">Registrarse</a>
-                            <a class="dropdown-item" href="IniciaSesion.xhtml">Iniciar Sesion</a>
-                        </div>
-                    </li>
-                </ul>
+                        <li class="nav-item dropdown">
+                            <h:commandLink value="Mantenimiento" class="nav-link dropdown-toggle" id="navbarDropdown" rendered = "#{iniciaSesionBean.usuarioLogueado().esAdministrador()}"></h:commandLink>
+                            <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
+                                <h:commandLink class="dropdown-item" value="Mantenimiento de Usuario" action="Usuario.xhtml"></h:commandLink>
+                                <h:commandLink class="dropdown-item" value="Mantenimiento de Productos" action="Producto.xhtml"></h:commandLink>                               
+                            </div>
+                        </li>
 
-            </div>
-        </nav>
-        <div class="container mt-5 pt-5">
-            <div class="row">
-                <div class="col text-center">
-                    <h1>Productos por Categoria</h1>
-                    <div class="form-group">
-                        <h:selectOneMenu class="form-control" value=
-                                         "#{menuBean.categoria}" 
-                                         onchange="submit()">
-                            <f:selectItems value="#{menuBean.Categorias()}"/>
+                        <li class="nav-item">
+                            <h:commandLink class="nav-link" value="Despachos" action="Despachos.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esDespachador()}"></h:commandLink>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink class="nav-link" value="Reportes" action="Reportes.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esAdministrador()}"></h:commandLink>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <h:commandLink class="nav-link " action="Cart.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esCliente()}"><i class="fas fa-shopping-cart fa-2x"></i> 323</h:commandLink>
+                            <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
+                                <h:dataTable value = "#{pedidoBean.encPedido.detallesPedido}" var = "detallePedido"
+                                             styleClass = "table table-borderless table-hover text-center dropdown-item"
+                                             rendered="#{pedidoBean.encPedido.cantidadArticulos() > 0}"
+                                             id="dropdown-cart"
+                                             >
+                                    <h:column>
+                                        <f:facet name = "header">Foto</f:facet>
+                                        <h:graphicImage value="#{detallePedido.producto.link}" class="dropdown-cart-img"></h:graphicImage>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name = "header">Nombre</f:facet>
+                                            #{detallePedido.producto.nombre}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name = "header">Precio</f:facet>
+                                            #{detallePedido.producto.precio}
+                                    </h:column>                                    
+                                    <h:column>
+                                        <f:facet name = "header">Cantidad</f:facet>
+                                            #{detallePedido.cantidad}
+                                    </h:column> 
+                                    <h:column>
+                                        <f:facet name = "header">SubTotal</f:facet>
+                                            #{detallePedido.subtotal()}
+                                    </h:column>   
+                                    <!--                                    <h:column>
+                                                                            <f:facet name = "header">Iva</f:facet>
+                                    #{detallePedido.iva()}
+                            </h:column>   
+                            <h:column>
+                                <f:facet name = "header">Total</f:facet>
+                                    #{detallePedido.total()}
+                            </h:column>   -->
+                                </h:dataTable>
+                                <div class="dropdown-divider"></div>
+                                <h:outputLabel value ="Total: " class="pl-5" rendered="#{pedidoBean.encPedido.total() > 0}"><h:outputLabel value ="#{pedidoBean.encPedido.total()}" class="font-weight-bold text-right" rendered="#{pedidoBean.encPedido.total() > 0}"></h:outputLabel></h:outputLabel>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown">
+                                <i class="fas fa-user fa-2x"></i>
+                            </a>
+                            <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
+                                <h:commandLink class="dropdown-item" value="Detalles de la Cuenta" action="DetallesCuenta.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esCliente()}"></h:commandLink>
+                                <div class="dropdown-divider"></div>
+                                <h:commandButton class="dropdown-item" value="Cerrar Sesion" action="#{iniciaSesionBean.cerrarSesion()}"></h:commandButton>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+            <div class="container mt-5 pt-5 bg-white">
+                <!--<h:form> -->
+                <h1 class="display-4 text-danger mb-3">Catalogo de Productos</h1>
+                <h:outputLabel value="Filtrar por"></h:outputLabel>
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        <h:selectOneMenu value="#{pedidoBean.categoria}"  class="form-control">
+                            <f:selectItems value="#{pedidoBean.categorias()}"></f:selectItems>
                         </h:selectOneMenu>
                     </div>
+                    <div class="col-md-4">
+                        <h:commandButton value="Filtrar" class="btn btn-success" action="#{pedidoBean.filtrarProductos()}"></h:commandButton>
+                    </div>
                 </div>
+                <div class="row bg-light">
+                    <div class="col bg-white">
+                        <h:dataTable value="#{pedidoBean.productosFiltrados}" var="pro"
+                                     styleClass = "table table-borderless table-hover text-center table-sm table-responsive-lg"
+                                     rowClasses="border-bottom border-secondary"
+                                     >
+                            <h:column>
+                                <f:facet name="Foto"></f:facet>
+                                <h:graphicImage value="#{pro.link}" class="img-table"></h:graphicImage>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="Nombre"></f:facet>
+                                    #{pro.nombre}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="Cantidad"></f:facet>
+                                   ₡#{pro.precio}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="Acciones"></f:facet>
+                                <h:commandButton value="Anadir al Carro" action="#{pedidoBean.agregarArticuloPedido(pro)}" class="btn btn-block mr-1 btn-lg btn-warning"></h:commandButton>
+                            </h:column>
+
+                        </h:dataTable>
+                    </div>
+                </div>          
             </div>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="img/Menu/FriedChicken.jpg" alt="Card image cap"></img>
-                        <div class="card-body">
-                            <h5 class="card-title">Pollo Frito</h5>
-                            <p class="card-text">Precio por Unidad: ₡3000</p>
-                            <div class="form-group">
-                                <label for="unidades">Unidades</label>
-                                <input type="number" name="unidades" id="unidades" class="form-control" min="1" max="100"
-                                       value="1"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="total">Total</label>
-                                <input type="text" name="total" class="form-control" value="₡3000"></input>
-                            </div>
-                            <button class="btn btn-primary btn-block">Anadir al Carro</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="img/Menu/Hamburguesa.jpg" alt="Card image cap"></img>
-                        <div class="card-body">
-                            <h5 class="card-title">Hamburguesa</h5>
-                            <p class="card-text">Precio por Unidad: ₡3000</p>
-                            <div class="form-group">
-                                <label for="unidades">Unidades</label>
-                                <input type="number" name="unidades" id="unidades" class="form-control" min="1" max="100"
-                                       value="1"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="total">Total</label>
-                                <input type="text" name="total" class="form-control" value="₡3000"></input>
-                            </div>
-                            <button class="btn btn-primary btn-block">Anadir al Carro</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="img/Menu/Nachos.jpg" alt="Card image cap"></img>
-                        <div class="card-body">
-                            <h5 class="card-title">Nachos</h5>
-                            <p class="card-text">Precio por Unidad: ₡3000</p>
-                            <div class="form-group">
-                                <label for="unidades">Unidades</label>
-                                <input type="number" name="unidades" id="unidades" class="form-control" min="1" max="100"
-                                       value="1"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="total">Total</label>
-                                <input type="text" name="total" class="form-control" value="₡3000"></input>
-                            </div>
-                            <button class="btn btn-primary btn-block">Anadir al Carro</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="img/Menu/PotatoChips.jpg" alt="Card image cap"></img>
-                        <div class="card-body">
-                            <h5 class="card-title">Papas Fritas</h5>
-                            <p class="card-text">Precio por Unidad: ₡3000</p>
-                            <div class="form-group">
-                                <label for="unidades">Unidades</label>
-                                <input type="number" name="unidades" id="unidades" class="form-control" min="1" max="100"
-                                       value="1"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="total">Total</label>
-                                <input type="text" name="total" class="form-control" value="₡3000"></input>
-                            </div>
-                            <button class="btn btn-primary btn-block">Anadir al Carro</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="img/Menu/Pizza.jpg" alt="Card image cap"></img>
-                        <div class="card-body">
-                            <h5 class="card-title">Pizza</h5>
-                            <p class="card-text">Precio por Unidad: ₡3000</p>
-                            <div class="form-group">
-                                <label for="unidades">Unidades</label>
-                                <input type="number" name="unidades" id="unidades" class="form-control" min="1" max="100"
-                                       value="1"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="total">Total</label>
-                                <input type="text" name="total" class="form-control" value="₡3000"></input>
-                            </div>
-                            <button class="btn btn-primary btn-block">Anadir al Carro</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="img/Menu/Tacos.jpg" alt="Card image cap"></img>
-                        <div class="card-body">
-                            <h5 class="card-title">Taco</h5>
-                            <p class="card-text">Precio por Unidad: ₡3000</p>
-                            <div class="form-group">
-                                <label for="unidades">Unidades</label>
-                                <input type="number" name="unidades" id="unidades" class="form-control" min="1" max="100"
-                                       value="1"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="total">Total</label>
-                                <input type="text" name="total" class="form-control" value="₡3000"></input>
-                            </div>
-                            <button class="btn btn-primary btn-block">Anadir al Carro</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </h:form>  
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -26,7 +26,7 @@
 
                                 <div class="form-group">
                                     <h:outputLabel value="Nombre"></h:outputLabel>
-                                    <h:inputText class="form-control" p:placeholder="Kevon Ordoñez" value = "#{usuario.nombre}"></h:inputText>
+                                    <h:inputText class="form-control" p:placeholder="Kevin Ordoñez" value = "#{usuario.nombre}"></h:inputText>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel value="Contraseña"></h:outputLabel>
@@ -36,7 +36,9 @@
                                 <div class="form-group">
                                     <h:outputLabel value="Tipo de Usuario"></h:outputLabel>
                                     <h:selectOneMenu value="#{usuario.tipoUsuario}" class="form-control">
-                                        <f:selectItems value="#{mantenimientoUsuariosBean.TiposUsuarios()}"></f:selectItems>
+                                        <f:selectItem itemLabel="Administrador" itemValue="Administrador"></f:selectItem>
+                                        <f:selectItem itemLabel="Despachador" itemValue="Despachador"></f:selectItem>
+                                        <f:selectItem itemLabel="Cliente" itemValue="Cliente"></f:selectItem>
                                     </h:selectOneMenu>
                                 </div>
                                 <div class="form-group">

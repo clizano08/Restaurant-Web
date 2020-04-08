@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      >
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -14,84 +15,110 @@
         <title>Bienvenido a la Casona de Costa Rica</title>
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
-            <a class="navbar-brand mr-5 brand-hover" href="#">La Casona de Costa Rica</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <h:form>
 
-            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+                <a class="navbar-brand mr-5 brand-hover" href="#">La Casona de Costa Rica</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                <h:form class="my-lg-0 w-100">
-                    <div class="input-group">
-                        <h:inputText class="form-control" p:placeholder="Buscar...."
-                                     ></h:inputText>
-                        <div class="input-group-append margin-right">
-                            <h:commandButton class="btn btn-outline-danger" value="Buscar"></h:commandButton>
-                        </div>
+                <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+
+                    <ul class="navbar-nav margin-right">
+                        <li class="nav-item active">
+                            <h:commandLink class="nav-link" value="Home" action="index.xhtml"></h:commandLink>
+                            <!--<a class="nav-link " href="index.xhtml">Home <span class="sr-only">(current)</span></a>-->
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink class="nav-link" value="Menu" action="Menu.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esCliente()}"></h:commandLink>
+                            <!--<a class="nav-link " href="Menu.xhtml">Menu</a>-->
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <h:commandLink value="Mantenimiento" class="nav-link dropdown-toggle" id="navbarDropdown" rendered = "#{iniciaSesionBean.usuarioLogueado().esAdministrador()}"></h:commandLink>
+                            <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
+                                <h:commandLink class="dropdown-item" value="Usuarios" action="Usuario.xhtml"></h:commandLink>
+                                <h:commandLink class="dropdown-item" value="Productos" action="Producto.xhtml"></h:commandLink>                               
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <h:commandLink class="nav-link" value="Despachos" action="Despachos.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esDespachador()}"></h:commandLink>
+                        </li>
+                        <li class="nav-item">
+                            <h:commandLink class="nav-link" value="Reportes" action="Reportes.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esAdministrador()}"></h:commandLink>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <h:commandLink class="nav-link " action="Cart.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esCliente()}"><i class="fas fa-shopping-cart fa-2x"></i> 323</h:commandLink>
+                            <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
+                                <h:dataTable value = "#{pedidoBean.encPedido.detallesPedido}" var = "detallePedido"
+                                             styleClass = "table table-borderless table-hover text-center dropdown-item"
+                                             rendered="#{pedidoBean.encPedido.cantidadArticulos() > 0}"
+                                             id="dropdown-cart"
+                                             >
+                                    <h:column>
+                                        <f:facet name = "header">Foto</f:facet>
+                                        <h:graphicImage value="#{detallePedido.producto.link}" class="dropdown-cart-img"></h:graphicImage>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name = "header">Nombre</f:facet>
+                                            #{detallePedido.producto.nombre}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name = "header">Precio</f:facet>
+                                            #{detallePedido.producto.precio}
+                                    </h:column>                                    
+                                    <h:column>
+                                        <f:facet name = "header">Cantidad</f:facet>
+                                            #{detallePedido.cantidad}
+                                    </h:column> 
+                                    <h:column>
+                                        <f:facet name = "header">SubTotal</f:facet>
+                                            #{detallePedido.subtotal()}
+                                    </h:column>   
+                                    <!--                                    <h:column>
+                                                                            <f:facet name = "header">Iva</f:facet>
+                                    #{detallePedido.iva()}
+                            </h:column>   
+                            <h:column>
+                                <f:facet name = "header">Total</f:facet>
+                                    #{detallePedido.total()}
+                            </h:column>   -->
+                                </h:dataTable>
+                                <div class="dropdown-divider"></div>
+                                <h:outputLabel value ="Total: " class="pl-5" rendered="#{pedidoBean.encPedido.total() > 0}"><h:outputLabel value ="#{pedidoBean.encPedido.total()}" class="font-weight-bold text-right" rendered="#{pedidoBean.encPedido.total() > 0}"></h:outputLabel></h:outputLabel>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown">
+                                <i class="fas fa-user fa-2x"></i>
+                            </a>
+                            <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
+                                <h:commandLink class="dropdown-item" value="Detalles de la Cuenta" action="DetallesCuenta.xhtml" rendered = "#{iniciaSesionBean.usuarioLogueado().esCliente()}"></h:commandLink>
+                                <div class="dropdown-divider"></div>
+                                <h:commandButton class="dropdown-item" value="Cerrar Sesion" action="#{iniciaSesionBean.cerrarSesion()}"></h:commandButton>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                <div class="row bg bg-height-min text-center align-items-center">
+                    <div class="col">
+                        <h1 class="display-2 text-light">Bienvenido #{iniciaSesionBean.usuarioLogueado().nombre}</h1>
+                        <p class="display-4 text-light">Que esperas? Ordena tu Comida!</p>
+                        <a href="Menu.html" class="btn btn-lg btn-primary">Comprar</a>
                     </div>
-                </h:form>
-
-                <ul class="navbar-nav margin-right">
-                    <li class="nav-item active ">
-                        <a class="nav-link " href="index.xhtml">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Menu.xhtml">Menu</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="mantenimientoDrowDown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mantenimiento
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="mantenimientoDrowDown">
-                            <a class="dropdown-item" href="Producto.xhtml">Producto</a>
-                            <a class="dropdown-item" href="Usuario.xhtml">Usuario</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Despachos.xhtml">Despachos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Reportes.xhtml">Reportes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Cart.xhtml"><i class="fas fa-shopping-cart fa-2x"></i></a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user fa-2x"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="DetallesCuenta.xhtml">Detalles de la Cuenta</a>
-                            <a class="dropdown-item" href="HistorialCuenta.xhtml">Historial de Compra</a>
-                            <h:form>
-                                <h:commandButton class="dropdown-item" value="Cerrar Sesion"></h:commandButton>
-                            </h:form>
-                            <!-- <a class="dropdown-item" href="#">Despachos</a> -->
-                            <!-- <a class="dropdown-item" href="#">Mantenimiento</a> -->
-                            <a class="dropdown-item" href="Registrate.xhtml">Registrarse</a>
-                            <a class="dropdown-item" href="IniciaSesion.xhtml">Iniciar Sesion</a>
-                        </div>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-
-        <div class="container-fluid">
-            <div class="row bg bg-height-min text-center align-items-center">
-                <div class="col">
-                    <h1 class="display-2 text-light">¿Caro? ¡Si! Pero lo mejor…</h1>
-                    <p class="display-4 text-light">Que esperas? Ordena tu Comida!</p>
-                    <a href="Menu.html" class="btn btn-lg btn-primary">Comprar</a>
                 </div>
             </div>
-        </div>
-
+        </h:form>
     </h:body>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
